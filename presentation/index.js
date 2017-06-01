@@ -5,7 +5,6 @@ import React from "react";
 import {
   Appear,
   BlockQuote,
-  Cite,
   Deck,
   Heading,
   Image,
@@ -28,12 +27,7 @@ require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
 
 
-const images = {
-  city: require("../assets/city.jpg"),
-  kat: require("../assets/kat.png"),
-  logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
-};
+const images = {};
 
 preloader(images);
 
@@ -52,59 +46,86 @@ export default class Presentation extends React.Component {
     return (
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
         <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Benchmarking DBs in the cloud
+          <Heading size={1} fit lineHeight={1} textColor="secondary">
+            DBs IN THE CLOUD (wip)
           </Heading>
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            how do containerized DBs perform compare to eachother?
+            enabling optimizations thanks to containers ❤️
           </Text>
         </Slide>
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>How it started</Heading>
+        <Slide transition={["fade"]} bgColor="secondary">
+          <Heading size={4} textColor="tertiary" caps>How it started</Heading>
           <Appear>
-            <Heading size={6} textColor="secondary">golang dev with MySQL backend</Heading>
+            <Text size={6} textColor="primary">containerized everything</Text>
           </Appear>
           <Appear>
-            <Text size={4} textColor="secondary">let's benchmark!</Text>
+            <Text size={6} textColor="primary">embraced swarm and kubernetes</Text>
+          </Appear>
+          <Appear>
+            <Text size={6} textColor="primary">can get everything running, HA, at any provider, within minutes</Text>
+          </Appear>
+          <Appear>
+            <Text size={5} textColor="tertiary">Wait, not everything!</Text>
           </Appear>
         </Slide>
+        <Slide transition={["fade"]} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>Objectives</Heading>
+          <List ordered>
+            <Appear>
+              <ListItem textSize={30}>Is it easy to cluster a containerized RDBMS?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textSize={30}>Is cockroachdb ready for prime time?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textSize={30}>Which RDMS is faster/easier to use for my usual work?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textSize={30}>Can I beat Hosted Google DBs price/perf?</ListItem>
+            </Appear>
+          </List>
+        </Slide>
         <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>The benchmark</Heading>
+          <Heading size={6} textColor="secondary" caps>The setup</Heading>
           <List>
             <ListItem>Let's use Google Cloud (why not?)</ListItem>
             <ListItem>Stick to Golang (1.8.3)</ListItem>
             <ListItem>VM 1 vCPU, 3.75GB RAM, standard disk</ListItem>
-            <ListItem>10000 reqs (to be increased)</ListItem>
-            <ListItem>50 concurrent reqs</ListItem>
+            <ListItem>1 000 000 reqs</ListItem>
+            <ListItem>50 concurrent goroutines</ListItem>
             <ListItem>Pluggable schemas, pluggable dbs</ListItem>
+            <ListItem>AUTOMATED</ListItem>
+          </List>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary">The tested RDBMSs</Heading>
+          <List>
+            <Appear>
+              <ListItem textSize={30}>Other MySQL bin compatible (percona, maria)</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textSize={30}>Cockroachdb, because it's 100% golang and cloud native!</ListItem>
+            </Appear>
           </List>
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
             <Quote>Wait, might as well...</Quote>
-            <Cite>Me</Cite>
           </BlockQuote>
         </Slide>
         <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>Might as well compare with...</Heading>
           <List>
-            <Appear>
-              <ListItem textSize={30}>other MySQL bin compatible (percona, maria)</ListItem>
-            </Appear>
             <Appear>
               <ListItem textSize={30}>Postgres, everybody is talking about it</ListItem>
             </Appear>
             <Appear>
-              <ListItem textSize={30}>Oracle, because it's expensive (painful impl)</ListItem>
+              <ListItem textSize={30}>Oracle, because it's expensive (and painful)</ListItem>
             </Appear>
             <Appear>
               <ListItem textSize={30}>MS SQL server, because they just launched it on linux!</ListItem>
             </Appear>
             <Appear>
               <ListItem textSize={30}>SQLite, because it's a good reference</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem textSize={30}>Cockroachdb, because it's 100% golang and cloud native!</ListItem>
             </Appear>
             <Appear>
               <ListItem textSize={30}>Hosted MySQL on GCP, because it's my usual pick</ListItem>
@@ -116,23 +137,39 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
-            <Quote>Wait, might as well also compare if there is any difference between Kubernetes and Swarm</Quote>
-            <Cite>Me</Cite>
+            <Quote>Wait, might as well...</Quote>
           </BlockQuote>
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={6} textColor="secondary" caps>
-            <Link href="https://playwithsql-summary.surge.sh/" target="_blank">Results</Link>
+            <Link textColor="tertiary" href="https://playwithsql-summary.surge.sh/" target="_blank">Results</Link>
           </Heading>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="tertiary" textColor="tertiary">
+          <Heading size={6} textColor="primary" caps>Objectives</Heading>
+          <List ordered>
+            <Appear>
+              <ListItem textColor="primary" textSize={30}>Is it easy to cluster a containerized RDBMS?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary" textSize={30}>Is cockroachdb ready for prime time?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary" textSize={30}>Which RDMS is faster/easier to use for my usual work?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary" textSize={30}>Can I beat Hosted Google DBs price/perf?</ListItem>
+            </Appear>
+          </List>
         </Slide>
         <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>What's next?</Heading>
           <List>
             <ListItem textSize={30}>Increase stability</ListItem>
-            <ListItem textSize={30}>Deploy clustered DBs (galera, cockroachdb, postgres)</ListItem>
+            <ListItem textSize={30}>More benchmarks</ListItem>
+            <ListItem textSize={30}>Deploy HA DB cluster (galera, cockroachdb, postgres)</ListItem>
             <ListItem textSize={30}>Test different cloud storage (SSD, storage driver)</ListItem>
-            <ListItem textSize={30}>Optimize DB configurations (any DBA?)</ListItem>
-            <ListItem textSize={30}>Gather contributors!</ListItem>
+            <ListItem textSize={30}>Optimize DB configurations</ListItem>
           </List>
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
