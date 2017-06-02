@@ -50,7 +50,7 @@ export default class Presentation extends React.Component {
             DBs IN THE CLOUD (wip)
           </Heading>
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            enabling optimizations thanks to containers ❤️
+            playing with RDBMs, thanks to containers ❤️
           </Text>
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary">
